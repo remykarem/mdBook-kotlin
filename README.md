@@ -9,7 +9,7 @@ mdBook-kotlin is a fork from [mdBook](https://github.com/rust-lang/mdBook) that 
 2. Install mdBook-kotlin:
 
     ```bash
-    cargo install --git https://github.om/remykarem/mdBook-kotlin
+    cargo install mdbook-kotlin --git https://github.om/remykarem/mdBook-kotlin
     ```
 
 3. Create a book:
