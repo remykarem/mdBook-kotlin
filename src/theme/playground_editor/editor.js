@@ -20,7 +20,7 @@ window.editors = [];
 
         editor.$blockScrolling = Infinity;
 
-        editor.getSession().setMode("ace/mode/rust");
+        editor.getSession().setMode("ace/mode/kotlin");
 
         editor.originalCode = editor.getValue();
 
