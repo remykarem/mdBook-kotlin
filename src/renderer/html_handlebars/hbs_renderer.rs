@@ -889,35 +889,35 @@ fn add_playground_pre(
                             hide_lines(&content)
                         }
                     )
-                } else if classes.contains("language-kotlin") {
-                    if (!classes.contains("ignore")
-                        && !classes.contains("noplayground")
-                        && !classes.contains("noplaypen")
-                        && playground_config.runnable)
-                        || classes.contains("mdbook-runnable")
-                    {
-                        // wrap the contents in an external pre block
-                        format!(
-                            "<pre class=\"playground\"><code class=\"{}\">{}</code></pre>",
-                            classes,
+                } else {
+                    format!("<code class=\"{}\">{}</code>", classes, hide_lines(code))
+                }
+            } else if classes.contains("language-kotlin") {
+                if (!classes.contains("ignore")
+                    && !classes.contains("noplayground")
+                    && !classes.contains("noplaypen")
+                    && playground_config.runnable)
+                    || classes.contains("mdbook-runnable")
+                {
+                    // wrap the contents in an external pre block
+                    format!(
+                        "<pre class=\"playground\"><code class=\"{}\">{}</code></pre>",
+                        classes,
+                        {
+                            let content: Cow<'_, str> = if playground_config.editable
+                                && code.contains("fun main")
                             {
-                                let content: Cow<'_, str> = if playground_config.editable
-                                    && code.contains("fun main")
-                                {
-                                    code.into()
-                                } else {
-                                    // we need to inject our own main
-                                    let (_attrs, code) = partition_source(code);
-    
-                                    format!("# fun main() {{\n{}#}}", code)
-                                        .into()  
-                                };
-                                hide_lines(&content)
-                            }
-                        )
-                    } else {
-                        format!("<code class=\"{}\">{}</code>", classes, hide_lines(code))
-                    }
+                                code.into()
+                            } else {
+                                // we need to inject our own main
+                                let (_attrs, code) = partition_source(code);
+
+                                format!("# fun main() {{\n{}#}}", code)
+                                    .into()  
+                            };
+                            hide_lines(&content)
+                        }
+                    )
                 } else {
                     format!("<code class=\"{}\">{}</code>", classes, hide_lines(code))
                 }
