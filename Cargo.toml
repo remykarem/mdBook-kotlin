@@ -1,5 +1,5 @@
 [package]
-name = "mdbook-kotlin"
+name = "mdbook"
 version = "0.0.1"
 authors = [
     "Raimi Karim <raimi.bkarim@gmail.com>"
