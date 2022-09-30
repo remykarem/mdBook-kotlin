@@ -298,6 +298,7 @@ impl HtmlHandlebars {
             write_file(destination, "editor.js", playground_editor::JS)?;
             write_file(destination, "ace.js", playground_editor::ACE_JS)?;
             write_file(destination, "mode-rust.js", playground_editor::MODE_RUST_JS)?;
+            write_file(destination, "mode-kotlin.js", playground_editor::MODE_KOTLIN_JS)?;
             write_file(
                 destination,
                 "theme-dawn.js",
@@ -881,11 +882,40 @@ fn add_playground_pre(
                                 let (attrs, code) = partition_source(code);
 
                                 format!("# #![allow(unused)]\n{}#fn main() {{\n{}#}}", attrs, code)
-                                    .into()
+                                    .into()  
                             };
                             hide_lines(&content)
                         }
                     )
+                } else if classes.contains("language-kotlin") {
+                    if (!classes.contains("ignore")
+                        && !classes.contains("noplayground")
+                        && !classes.contains("noplaypen")
+                        && playground_config.runnable)
+                        || classes.contains("mdbook-runnable")
+                    {
+                        // wrap the contents in an external pre block
+                        format!(
+                            "<pre class=\"playground\"><code class=\"{}\">{}</code></pre>",
+                            classes,
+                            {
+                                let content: Cow<'_, str> = if playground_config.editable
+                                    && code.contains("fun main")
+                                {
+                                    code.into()
+                                } else {
+                                    // we need to inject our own main
+                                    let (_attrs, code) = partition_source(code);
+    
+                                    format!("# fun main() {{\n{}#}}", code)
+                                        .into()  
+                                };
+                                hide_lines(&content)
+                            }
+                        )
+                    } else {
+                        format!("<code class=\"{}\">{}</code>", classes, hide_lines(code))
+                    }
                 } else {
                     format!("<code class=\"{}\">{}</code>", classes, hide_lines(code))
                 }

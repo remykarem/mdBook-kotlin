@@ -1,15 +1,24 @@
-# mdBook
+# mdBook-kotlin
 
-[![Build Status](https://github.com/rust-lang/mdBook/workflows/CI/badge.svg?event=push)](https://github.com/rust-lang/mdBook/actions?workflow=CI)
-[![crates.io](https://img.shields.io/crates/v/mdbook.svg)](https://crates.io/crates/mdbook)
-[![LICENSE](https://img.shields.io/github/license/rust-lang/mdBook.svg)](LICENSE)
+mdBook-kotlin is a fork from [mdBook](https://github.com/rust-lang/mdBook) that lets you create modern online books from Markdown files and run Kotlin examples from code snippets.
 
-mdBook is a utility to create modern online books from Markdown files.
+## Quick start
 
-Check out the **[User Guide]** for a list of features and installation and usage information.
-The User Guide also serves as a demonstration to showcase what a book looks like.
+1. Install Rust [here](https://www.rust-lang.org/tools/install).
 
-If you are interested in contributing to the development of mdBook, check out the [Contribution Guide].
+2. Install mdBook-kotlin:
+
+    ```bash
+    cargo install --git https://github.om/remykarem/mdBook-kotlin
+    ```
+
+3. Create a book:
+
+    ```bash
+    mkdir my-kotlin-book
+    cd my-kotlin-book
+    mdbook-kotlin init
+    ```
 
 ## License
 

@@ -1,10 +1,8 @@
 [package]
 name = "mdbook"
-version = "0.4.21"
+version = "0.0.1"
 authors = [
-    "Mathieu David <mathieudavid@mathieudavid.org>",
-    "Michael-F-Bryan <michaelfbryan@gmail.com>",
-    "Matt Ickstadt <mattico8@gmail.com>"
+    "Raimi Karim <raimi.bkarim@gmail.com>"
 ]
 documentation = "http://rust-lang.github.io/mdBook/index.html"
 edition = "2021"
@@ -64,7 +62,8 @@ search = ["elasticlunr-rs", "ammonia"]
 
 [[bin]]
 doc = false
-name = "mdbook"
+name = "mdbook-kotlin"
+path = "src/main.rs"
 
 [[example]]
 name = "nop-preprocessor"

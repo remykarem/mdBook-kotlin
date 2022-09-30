@@ -64,7 +64,7 @@ fn main() {
 fn create_clap_app() -> App<'static> {
     let app = App::new(crate_name!())
         .about(crate_description!())
-        .author("Mathieu David <mathieudavid@mathieudavid.org>")
+        .author("Raimi Karim <raimi.bkarim@gmail.com>")
         .version(VERSION)
         .setting(AppSettings::PropagateVersion)
         .setting(AppSettings::ArgRequiredElseHelp)
