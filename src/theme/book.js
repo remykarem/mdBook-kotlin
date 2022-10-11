@@ -140,7 +140,12 @@ function playground_text(playground, hidden = true) {
         })
         .then(response => response.json())
         .then(response => {
-            if (response.text.trim() === '') {
+            if (response.errors["File.kt"].length > 0) {
+                result_block.innerText = response.errors["File.kt"]
+                    .map(({message, interval, severity}) => `${severity} at line ${interval.start.line}:${interval.start.ch}: ${message}`)
+                    .join("\n");
+                result_block.classList.remove("result-no-output");
+            } else if (response.text.trim() === '') {
                 result_block.innerText = "No output";
                 result_block.classList.add("result-no-output");
             } else {
