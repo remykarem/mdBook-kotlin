@@ -922,8 +922,8 @@ dependencies = [
 ]
 
 [[package]]
-name = "mdbook"
-version = "0.0.1"
+name = "mdbook-kotlin"
+version = "0.0.3"
 dependencies = [
  "ammonia",
  "anyhow",

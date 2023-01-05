@@ -130,7 +130,7 @@ function playground_text(playground, hidden = true) {
 
         result_block.innerText = "Running...";
 
-        fetch_with_timeout("https://api.kotlinlang.org//api/1.7.10/compiler/run", {
+        fetch_with_timeout("https://api.kotlinlang.org//api/1.7.21/compiler/run", {
             headers: {
                 'Content-Type': "application/json",
             },

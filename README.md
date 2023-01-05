@@ -19,6 +19,16 @@ mdBook-kotlin is a fork from [mdBook](https://github.com/rust-lang/mdBook) that 
     cd my-kotlin-book
     mdbook-kotlin init
     ```
+   
+## Development
+
+1. Append `-dev` to `version = x.x.x` in `Cargo.toml`.
+
+2. Install
+
+   ```bash
+   cargo install --path .
+   ```
 
 ## License
 
