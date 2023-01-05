@@ -145,6 +145,14 @@ function playground_text(playground, hidden = true) {
                     .map(({message, interval, severity}) => `${severity} at line ${interval.start.line}:${interval.start.ch}: ${message}`)
                     .join("\n");
                 result_block.classList.remove("result-no-output");
+            } else if (response.text.trim() === '' && response["exception"]) {
+                const exceptionMessageHeader = `Exception in thread "main" ${response["exception"]["fullName"]}: ${response["exception"]["message"]}`;
+                const exceptionMessageBody = response["exception"]["stackTrace"]
+                    .map(({className, methodName, fileName, lineNumber}) =>
+                        `  at ${className}.${methodName} (${fileName ?? ''}:${lineNumber})`)
+                    .join("\n");
+                result_block.innerText = exceptionMessageHeader + "\n" + exceptionMessageBody;
+                result_block.classList.remove("result-no-output");
             } else if (response.text.trim() === '') {
                 result_block.innerText = "No output";
                 result_block.classList.add("result-no-output");
